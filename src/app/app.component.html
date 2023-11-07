@@ -1,0 +1,43 @@
+<button (click)="changeModalVisilibty('form')">Show Form</button>
+
+<app-modal  (close)="changeModalVisilibty('')" *ngIf="modalVisibility === ('form')">
+  <form action="#">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" #title >
+    </div>
+    <div>
+      <label for="duration">Duration:</label>
+      <input type="text" id="duration" name="duration" #duration>
+    </div>
+    <div>
+      <label for="years">Years:</label>
+      <input type="text" id="years" name="years" #years>
+    </div>
+    <div>
+      <button (click)="addAlbumHandler()">Submit</button>
+  </div>
+  </form>
+</app-modal>
+
+<app-modal  (close)="changeModalVisilibty('')" *ngIf="modalVisibility === ('edit')">
+  <form action="#">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" #title >
+    </div>
+    <div>
+      <label for="duration">Duration:</label>
+      <input type="text" id="duration" name="duration" #duration>
+    </div>
+    <div>
+      <label for="years">Years:</label>
+      <input type="text" id="years" name="years" #years>
+    </div>
+    <div>
+      <button (click)="editAlbumHandler()">Edit</button>
+  </div>
+  </form>
+</app-modal>
+
+<app-album-display *ngFor="let a of albums" [album]="a" (deleteContact)="deleteAlbumHandler($event)" (editContact)="editAlbumHandler()"></app-album-display>
